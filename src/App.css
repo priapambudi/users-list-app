@@ -1,0 +1,43 @@
+/* .root {
+  background-color: aliceblue;
+} */
+
+.container {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+  color: black;
+  width: 400px;
+}
+
+.card .image img {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.card .info {
+  padding: 10px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
