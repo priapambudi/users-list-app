@@ -30,7 +30,7 @@ const Register = () => {
       //   console.log(response.data.token);
       setToken(response.data.token);
       setTimeout(() => {
-        navigate("/");
+        navigate("/login");
       }, 1000);
     } catch (error) {
       //   console.log(error);

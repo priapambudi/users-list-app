@@ -31,8 +31,11 @@ const Login = () => {
       const response = await axios.post("https://reqres.in/api/login", payload);
       //   console.log(response.data.token);
       setToken(response.data.token);
+      localStorage.setItem("access_token", response.data.token);
+      localStorage.setItem("username", username);
+
       setTimeout(() => {
-        navigate("/home");
+        navigate("/");
       }, 1000);
     } catch (error) {
       //   console.log(error.response);

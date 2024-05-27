@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
+import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -51,9 +53,10 @@ const Home = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="container">
         {data.map((item) => (
-          <div className="card" key={item.id}>
+          <Link to={`user/${item.id}`} className="card" key={item.id}>
             <div className="image">
               <img src={item.avatar} alt="" />
             </div>
@@ -61,7 +64,7 @@ const Home = () => {
               <h3>{`Name : ${item.first_name} ${item.last_name}`}</h3>
               <p>{`Email : ${item.email}`}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="pagination">
