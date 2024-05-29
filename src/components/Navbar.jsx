@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const token = localStorage.getItem("access_token");
@@ -17,7 +18,12 @@ const Navbar = () => {
   return (
     <div className="bg-white">
       <div className="flex justify-around py-4 px-auto">
-        <span className="text-2xl ">List User App</span>
+        <div className="flex gap-3">
+          <Link>
+            <img width={30} height={30} src={Logo} alt="" />
+          </Link>
+          <span className="text-2xl ">List User App</span>
+        </div>
 
         <div className="flex gap-4">
           <Link className="px-2 py-1" to="/">
@@ -25,7 +31,7 @@ const Navbar = () => {
           </Link>
 
           {token && (
-            <h1>
+            <h1 className="px-2 py-1">
               Welcome, <span className="font-bold">{username}</span>
             </h1>
           )}

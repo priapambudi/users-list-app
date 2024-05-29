@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import SignInImg from "../assets/sign_in.svg";
+import Logo from "../assets/logo.png";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -32,13 +33,13 @@ const Login = () => {
       const response = await axios.post("https://reqres.in/api/login", payload);
       //   console.log(response.data.token);
       setToken(response.data.token);
-      console.log(response.data);
+      // console.log(response.data);
       localStorage.setItem("access_token", response.data.token);
       localStorage.setItem("username", username);
 
       setTimeout(() => {
         navigate("/");
-      }, 1000);
+      }, 5000);
     } catch (error) {
       //   console.log(error.response);
       setError(error.response.data.error);
@@ -49,18 +50,28 @@ const Login = () => {
     <div className="">
       <div className="relative flex flex-col items-center justify-center m-6 space-y-8 shadow-2xl rounded-3xl md:flex-row md:space-y-0">
         <div className="flex flex-col justify-center p-8 md:p-14">
+          <Link to={"/"}>
+            <img src={Logo} alt="" />
+          </Link>
           <span className="mb-3 text-4xl font-bold">Sign In</span>
           <span className="mb-4 font-light text-gray-400">
             Please enter your details
           </span>
-          {token && <p>Login Success</p>}
+          {token && (
+            <p className="p-2 font-semibold bg-green-400 rounded-lg ">
+              Login Success
+            </p>
+          )}
 
-          {error && <p>{error}</p>}
+          {error && (
+            <p className="p-2 font-semibold bg-red-400 rounded-lg ">{error}</p>
+          )}
           <div className="py-3">
             <span className="mb-2 text-md">Username</span>
             <input
               className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="text"
+              id="username"
               placeholder="username"
               onChange={handleChangeUsername}
             />
@@ -71,6 +82,7 @@ const Login = () => {
             <input
               className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
+              id="password"
               placeholder="password"
               onChange={handleChangePassword}
             />

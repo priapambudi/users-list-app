@@ -89,7 +89,7 @@ const Home = () => {
                   {/* <Link to={`user/${item.id}`}> */}
                   <button
                     onClick={() => openModal(item.id)}
-                    className="w-full px-3 py-2 mt-2 text-sm font-semibold text-white bg-blue-500 rounded hover:bg-blue-700"
+                    className="w-full px-3 py-2 mt-2 text-sm font-semibold text-white rounded bg-slate-600 hover:bg-slate-400"
                   >
                     View Details
                   </button>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import SignUpImg from "../assets/sign_up.svg";
+import Logo from "../assets/logo.png";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -42,13 +43,22 @@ const Register = () => {
     <div>
       <div className="relative flex flex-col items-center justify-center m-6 space-y-8 shadow-2xl rounded-3xl md:flex-row md:space-y-0">
         <div className="flex flex-col justify-center p-8 md:p-14">
+          <Link to={"/"}>
+            <img src={Logo} alt="" />
+          </Link>
           <span className="mb-3 text-4xl font-bold">Sign Up</span>
           <span className="mb-4 font-light text-gray-400">
             Welcome, let's get started
           </span>
 
-          {token && <p>Registered Successfully</p>}
-          {error && <p>{error}</p>}
+          {token && (
+            <p className="p-2 font-semibold bg-green-400 rounded-lg">
+              Registered Successfully
+            </p>
+          )}
+          {error && (
+            <p className="p-2 font-semibold bg-red-400 rounded-lg">{error}</p>
+          )}
           <div className="py-3">
             <span className="mb-2 text-base">Username</span>
             <input
