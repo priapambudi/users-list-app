@@ -21,7 +21,7 @@ export const routeList = [
     path: "user/:id",
     element: (
       <ProtectedRoute>
-        <DetailUser />,
+        <DetailUser />
       </ProtectedRoute>
     ),
   },

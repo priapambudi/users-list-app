@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import SignUpImg from "../assets/sign_up.svg";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -39,26 +40,60 @@ const Register = () => {
   };
   return (
     <div>
-      <h1>Register</h1>
-      {token && <p>Registered Successfully</p>}
-      {error && <p>{error}</p>}
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={handleChangeUsername}
-        />
+      <div className="relative flex flex-col items-center justify-center m-6 space-y-8 shadow-2xl rounded-3xl md:flex-row md:space-y-0">
+        <div className="flex flex-col justify-center p-8 md:p-14">
+          <span className="mb-3 text-4xl font-bold">Sign Up</span>
+          <span className="mb-4 font-light text-gray-400">
+            Welcome, let's get started
+          </span>
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handleChangePassword}
-        />
-        <button onClick={handleRegister}>Register</button>
+          {token && <p>Registered Successfully</p>}
+          {error && <p>{error}</p>}
+          <div className="py-3">
+            <span className="mb-2 text-base">Username</span>
+            <input
+              className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              type="text"
+              placeholder="username"
+              id="username"
+              value={username}
+              onChange={handleChangeUsername}
+            />
+          </div>
+
+          <div className="py-3">
+            <span className="mb-2 text-base">Password</span>
+            <input
+              className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              type="password"
+              placeholder="password"
+              id="password"
+              value={password}
+              onChange={handleChangePassword}
+            />
+          </div>
+
+          <button
+            className="w-full p-2 mb-6 text-white bg-black rounded-lg hover:bg-white hover:border hover:text-black hover:border-gray-300"
+            onClick={handleRegister}
+          >
+            Register
+          </button>
+
+          <div className="text-center text-gray-400">
+            Already have an account?{" "}
+            <Link to={"/login"} className="font-semibold text-black">
+              Sign In
+            </Link>
+          </div>
+        </div>
+        <div className="relative py-10">
+          <img
+            src={SignUpImg}
+            alt="signup"
+            className="w-[500px] h-[500px] hidden rounded-r-2xl md:block object-cover"
+          />
+        </div>
       </div>
     </div>
   );
